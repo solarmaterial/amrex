@@ -156,10 +156,10 @@ void advance (MultiFab& phi_old,
         {
             if(i == hix.x)
             {face_bcoef_x(i,j,k) = face_bcoef_x(i-1,j,k);}
-            else if(i != lox.x)
-            {face_bcoef_x(i,j,k) = (array_phi_k(i-1,j,k) + array_phi_k(i,j,k)) / 2;}
-            else
+            else if(i == lox.x)
             {face_bcoef_x(i,j,k) = (array_phi_k(i,j,k) + array_phi_k(i+1,j,k)) / 2;}
+            else
+            {face_bcoef_x(i,j,k) = (array_phi_k(i-1,j,k) + array_phi_k(i,j,k)) / 2;}
         });
 
 #if (AMREX_SPACEDIM > 1)
@@ -168,10 +168,10 @@ void advance (MultiFab& phi_old,
         {
             if(j == hiy.y)
             {face_bcoef_y(i,j,k) = face_bcoef_y(i,j-1,k);}
-            else if(j != loy.y)
-            {face_bcoef_y(i,j,k) = (array_phi_k(i,j-1,k) + array_phi_k(i,j,k)) / 2;}
-            else
+            else if(j == loy.y)
             {face_bcoef_y(i,j,k) = (array_phi_k(i,j,k) + array_phi_k(i,j+1,k)) / 2;}
+            else
+            {face_bcoef_y(i,j,k) = (array_phi_k(i,j-1,k) + array_phi_k(i,j,k)) / 2;}
         });
 #endif
 
@@ -181,10 +181,10 @@ void advance (MultiFab& phi_old,
         {
             if(k == hiz.z)
             {face_bcoef_z(i,j,k) = face_bcoef_z(i,j,k-1);}
-            else if(k != loz.z)
-            {face_bcoef_z(i,j,k) = (array_phi_k(i,j,k-1) + array_phi_k(i,j,k)) / 2;}
-            else
+            else if(k == loz.z)
             {face_bcoef_z(i,j,k) = (array_phi_k(i,j,k) + array_phi_k(i,j,k+1)) / 2;}
+            else
+            {face_bcoef_z(i,j,k) = (array_phi_k(i,j,k-1) + array_phi_k(i,j,k)) / 2;}
         });
 #endif
     }
