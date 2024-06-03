@@ -1,2 +1,3 @@
 # amrex
-I modified `HeatEquation_EX3_C` to calculate non-linear heat equation
+`test` contains the codes from https://github.com/AMReX-Codes/amrex/discussions/3970#discussion-6763933
+ 
