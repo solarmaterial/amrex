@@ -79,11 +79,11 @@ int main(int argc, char* argv[])
 
         amrex::ParallelFor(bx, [=] AMREX_GPU_DEVICE(int i, int j, int k){
             if( 7 < phi_old_array(i,j,k,0) && phi_old_array(i,j,k,0)< 9 )
-            { rhs_array(i,j,k) = 9999;
-              rhs_array(7,j,k) = 8888;
-              rhs_array(i+1,j,k) = 10000;
-	      rhs_array(i-2,j,k) = 7777 ;
-              rhs_array(i+2,j,k) = 11000;
+            { rhs_array(i,j,k) = 9999;//i = 8
+              rhs_array(7,j,k) = 8888;//i-1 = 7 
+              rhs_array(i+1,j,k) = 10000;//i+1 = 9
+	      rhs_array(i-2,j,k) = 7777 ;//i-2 = 6
+              rhs_array(i+2,j,k) = 11000;//i+2 = 10
              //
 	     //
 	     //rhs_array(i-4,j,k) = 5555;
